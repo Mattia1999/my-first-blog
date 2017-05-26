@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+def approved_comments(self):
+	return self.comments.filter(approved_comment=True)
 
 class Post(models.Model):
     author = models.ForeignKey('auth.User')
@@ -32,5 +34,3 @@ class Comment(models.Model):
     def __str__(self):
         return self.text
 		
-def approved_comments(self):
-	return self.comments.filter(approved_comment=True)
